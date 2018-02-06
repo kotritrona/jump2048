@@ -1,0 +1,353 @@
+/* OJ Hime Skin for 2048 Jumper. */
+
+@keyframes jump {
+  0% {
+  	transform: translateY(0) rotate(0deg);
+  }
+  
+  15% {
+  	transform: translateY(-24px) rotate(0deg);
+  }
+
+  50% {
+  	transform: translateY(-80px) rotate(0deg);
+  }
+
+  85% {
+  	transform: translateY(-24px) rotate(0deg);
+  }
+  
+  100% {
+  	transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes jump2 {
+  0% {
+  	transform: translateY(0) rotate(0deg);
+  }
+  
+  15% {
+  	transform: translateY(-24px) rotate(0deg);
+  }
+
+  50% {
+  	transform: translateY(-80px) rotate(0deg);
+  }
+
+  85% {
+  	transform: translateY(-24px) rotate(0deg);
+  }
+  
+  100% {
+  	transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes jumpLong {
+  0% {
+  	transform: translateY(0) rotate(0deg);
+  }
+  
+  15% {
+  	transform: translateY(-36px) rotate(0deg);
+  }
+
+  50% {
+  	transform: translateY(-120px) rotate(0deg);
+  }
+
+  85% {
+  	transform: translateY(-36px) rotate(0deg);
+  }
+  
+  100% {
+  	transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes jumpLong2 {
+  0% {
+  	transform: translateY(0) rotate(0deg);
+  }
+  
+  15% {
+  	transform: translateY(-36px) rotate(0deg);
+  }
+
+  50% {
+  	transform: translateY(-120px) rotate(0deg);
+  }
+
+  85% {
+  	transform: translateY(-36px) rotate(0deg);
+  }
+  
+  100% {
+  	transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes merged-inner {
+  0% {
+		background-position: -360px 0px;
+  }
+
+  99.99% { /* because 100% won't work... I think css3 should have some "instant change" feature on this. or it exists but idk. */
+		background-position: -360px 0px;
+  }
+
+  100% {
+		background-position: 0px 0px;
+  }
+}
+
+@keyframes move-up {
+	0% {
+		top: -100px;
+		opacity: 1;
+	}
+
+	100% {
+		top: -150px;
+		opacity: 0;
+	}
+}
+
+@keyframes bg-slide {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -256px 256px;
+	}
+}
+
+@keyframes bg-slide2 {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: 256px -256px;
+	}
+}
+
+.player-mid {
+	height: 120px;
+	width: 120px;
+	transform-origin: 0 50%;
+}
+
+.player > .player-mid > .player-inner {
+	color: transparent;
+	border: none;
+	border-radius: 0;
+	height: 120px;
+	width: 120px;
+}
+
+.player-left > .player-mid > .player-inner {
+	transform: translate(-60px, -120px) scaleX(1);
+}
+
+.player-right > .player-mid > .player-inner {
+	transform: translate(-60px, -120px) scaleX(-1);
+}
+
+.player-character-hime > .player-mid > .player-inner {
+	background-color: transparent;
+	background-image: url('hime.png');
+}
+
+.player-character-mariepoppo > .player-mid > .player-inner {
+	background-color: transparent;
+	background-image: url('mariepoppo.png');
+}
+
+.player-status-startup > .player-mid > .player-inner,
+.player-status-createTile > .player-mid > .player-inner, 
+.player-status-gridDrop > .player-mid > .player-inner, 
+.player-status-playerJumpEnd > .player-mid > .player-inner,
+.player-status-changePlayerFacing > .player-mid > .player-inner {
+	background-size: 720px 120px;
+	background-position: 0px 0px;
+}
+
+.player-status-gameOver > .player-mid > .player-inner {
+	background-size: 720px 120px;
+	background-position: -240px 0px;
+}
+
+.player-status-playerJump > .player-mid > .player-inner {
+	background-size: 720px 120px;
+	background-position: -120px 0px;
+}
+
+.player-status-chargeJump > .player-mid > .player-inner {
+	background-size: 720px 120px;
+	background-position: -600px 0px;
+}
+
+.animation-change-facing > .player-mid > .player-inner {
+	transition: 100ms linear;
+}
+
+.animation-mid-merged > .player-inner {
+	animation: merged-inner 200ms ease-in-out;
+}
+
+.tile-level-0 > .tile-mid > .tile-inner-top, .tile-level-1 > .tile-mid > .tile-inner-top {
+	background-image: url('board-empty.png');
+}
+
+.tile-level-2 > .tile-mid > .tile-inner-top {
+	background-image: url('board-drop.png');
+}
+
+.tile-level-3 > .tile-mid > .tile-inner-top {
+	background-image: url('board-encounter.png');
+}
+
+.tile-level-4 > .tile-mid > .tile-inner-top {
+	background-image: url('board-warp.png');
+}
+
+.tile-level-5 > .tile-mid > .tile-inner-top {
+	background-image: url('board-warpmove.png');
+}
+
+.tile-level-6 > .tile-mid > .tile-inner-top {
+	background-image: url('board-move.png');
+}
+
+.tile-level-7 > .tile-mid > .tile-inner-top {
+	background-image: url('board-ice.png');
+}
+
+.tile-level-8 > .tile-mid > .tile-inner-top {
+	background-image: url('board-draw.png');
+}
+
+.tile-level-9 > .tile-mid > .tile-inner-top {
+	background-image: url('board-bonus.png');
+}
+
+.tile-level-10 > .tile-mid > .tile-inner-top {
+	background-image: url('board-drop2x.png');
+}
+
+.tile-level-11 > .tile-mid > .tile-inner-top {
+	background-image: url('board-encounter2x.png');
+}
+
+.tile-level-12 > .tile-mid > .tile-inner-top {
+	background-image: url('board-warpmove2x.png');
+}
+
+.tile-level-13 > .tile-mid > .tile-inner-top {
+	background-image: url('board-move2x.png');
+}
+
+.tile-level-14 > .tile-mid > .tile-inner-top {
+	background-image: url('board-draw2x.png');
+}
+
+.tile-level-15 > .tile-mid > .tile-inner-top {
+	background-image: url('board-bonus2x.png');
+}
+
+.tile-level-16 > .tile-mid > .tile-inner-top {
+	background-image: url('board-boss.png');
+}
+
+.tile-level-17 > .tile-mid > .tile-inner-top {
+	background-image: url('board-home.png');
+}
+
+.tile > .tile-mid > .tile-inner-top, .tile-level-1 > .tile-mid > .tile-inner-top, .tile-level-2 > .tile-mid > .tile-inner-top {
+	background-color: transparent;
+	background-size: 100% 100%;
+	color: transparent;
+	border: 4px solid #a59281;
+}
+
+.score-addition {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: red;
+	font-size: 25px;
+	line-height: 25px;
+	font-weight: bold;
+	color: rgba(122, 122, 122, 0.9);
+	z-index: 100;
+	animation: move-up 600ms ease-in;
+	animation-fill-mode: both;
+}
+
+.bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	min-height: 100%;
+  background-image: url("bgl.png");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  padding-top: 40px;
+	animation: bg-slide 20s linear infinite;
+}
+
+.bg-overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+  background-image: url("bgh.png");
+	width: 100%;
+	height: 100%;
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  opacity: 1;
+	z-index: 1;
+	animation: bg-slide2 10s linear infinite;
+}
+
+.container, .sharing, .character-choice, .character-choice a {
+	background: none;
+	z-index: 10;
+}
+
+/* position: -> unclickable
+ * position: relative -> clickable
+ * ???????????
+ */
+.character-choice a{
+	position: relative;
+	z-index: 19;
+}
+
+.game-container, .score-container, .best-container {
+	z-index: 15;
+}
+
+p.game-intro, h1.title {
+	display: none;
+}
+
+p.game-explanation {
+	color: #54483A;
+	margin-top: 20px;
+	margin-bottom: 0;
+}
+
+.grid-cell, .game-container .game-message, .sharing {
+  background: none;
+}
+
+.game-container {
+	margin-top: 0;
+  background: none;
+  overflow: hidden;
+}
