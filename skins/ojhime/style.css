@@ -1995,7 +1995,7 @@ p.game-explanation {
 	-webkit-animation: bg-slide 20s linear infinite;
 }
 
-.bg-overlay {
+.bg-overlay {/*
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -2009,7 +2009,8 @@ p.game-explanation {
 	animation: bg-slide2 10s linear infinite;
 	-ms-animation: bg-slide2 10s linear infinite;
 	-moz-animation: bg-slide2 10s linear infinite;
-	-webkit-animation: bg-slide2 10s linear infinite;
+	-webkit-animation: bg-slide2 10s linear infinite;*/
+	display: none;
 }
 
 .container, .sharing, .character-choice, .character-choice a {
@@ -2017,10 +2018,6 @@ p.game-explanation {
 	z-index: 10;
 }
 
-/* position: -> unclickable
- * position: relative -> clickable
- * ???????????
- */
 .character-choice a{
 	position: relative;
 	z-index: 19;
