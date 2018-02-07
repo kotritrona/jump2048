@@ -87,6 +87,7 @@ HTMLActuator.prototype.actuateChangePlayerFacing = function (player) {
 };
 
 // added facing transition
+// also added sound effects
 HTMLActuator.prototype.updatePlayer = function(player, type) {
 	var self = this;
 	var scale = this.scale || function(_) { return _; };
@@ -144,9 +145,11 @@ HTMLActuator.prototype.updatePlayer = function(player, type) {
   				classes.push("animation-jumpLong2");
   			}
   		}
+  		self.playSound("jump");
   	}
   	else if(type == "abyss") {
   		classes.push("animation-abyss");
+  		self.playSound("abyss");
   	}
   	else if(type == "changeFacing") {
   		classes.push("animation-change-facing");
@@ -159,6 +162,7 @@ HTMLActuator.prototype.updatePlayer = function(player, type) {
 	
 };
 
+// added sound effects
 HTMLActuator.prototype.mergePlayer = function(player) {
 	var container = this.playerContainer;
 	var wrapper = container.querySelector(".player");
@@ -166,6 +170,15 @@ HTMLActuator.prototype.mergePlayer = function(player) {
   this.applyClasses(mid, ["player-mid", "animation-mid-merged"]);
   var inner = wrapper.querySelector(".player-inner");
 	inner.textContent = player.value;
+	if(player.mergedValue >= 30) {
+  	this.playSound("levelup");
+	}
+	else if(player.mergedValue >= 10) {
+  	this.playSound("stars");
+	}
+	else if(player.mergedValue >= 1) {
+  	this.playSound("landed");
+	}
 };
 
 HTMLActuator.prototype.chargePlayer = function(player, chargeTicks) {
@@ -189,6 +202,74 @@ HTMLActuator.prototype.chargePlayer = function(player, chargeTicks) {
 /* ----------- LocalStorage Key ----------- */
 
 LocalScoreManager.prototype.key = "bestScore-jump2048-ojhime";
+
+/* ----------- SOUND EFFECTS ----------- */
+
+HTMLActuator.prototype.loadSounds = function() {
+	if(this.sounds) {
+		return;
+	}
+	else {
+		this.sounds = {
+			jump: new Audio("skins/ojhime/throwdice.mp3"),
+			abyss: new Audio("skins/ojhime/hit.mp3"),
+			landed: new Audio("skins/ojhime/draw.mp3"),
+			stars: new Audio("skins/ojhime/stars.mp3"),
+			levelup: new Audio("skins/ojhime/levelup.mp3")
+		};
+		this.sounds.jump.volume = 0.3;
+		this.sounds.landed.volume = 0.3;
+		this.sounds.stars.volume = 0.7;
+		this.sounds.levelup.volume = 0.7;
+		this.sounds.abyss.volume = 0.7;
+	}
+};
+
+HTMLActuator.prototype.playSound = function(sound) {
+	if(!this.sounds) {
+		return;
+	}
+	var soundFile = this.sounds[sound];
+	if(!soundFile || typeof soundFile.play != 'function' || !soundFile.readyState) {
+		return;
+	}
+	soundFile.currentTime = 0;
+	soundFile.play();
+};
+
+// call loadSounds on initialization
+HTMLActuator.prototype.addPlayer = function(player) {
+	
+	this.loadSounds();
+	
+	var $C = function(_) {
+		return document.createElement(_);
+	}
+	
+	var scale = this.scale || function(_) { return _; };
+  var position  = { x: player.x, y: player.y };
+	
+	var classes = this.getPlayerClassSet(player);
+  classes.push("animation-new");
+	
+	var wrapper = $C("div");
+	var mid = $C("div");
+	var inner = $C("div");
+	
+	inner.textContent = player.value;
+	
+	this.applyClasses(wrapper, classes);
+	this.applyClasses(mid, ["player-mid"]);
+	this.applyClasses(inner, ["player-inner"]);
+	
+	wrapper.style.left = scale(position.x) + "px";
+	wrapper.style.top = scale(position.y) + "px";
+	
+	wrapper.appendChild(mid);
+	mid.appendChild(inner);
+	this.playerContainer.appendChild(wrapper);
+	
+};
  
 /* ----------- OJ SPECIFIC ----------- */
 
