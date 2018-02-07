@@ -1957,14 +1957,14 @@ p.game-explanation {
 	top: 0;
 	width: 100%;
 	min-height: 100%;
-  background-image: url("bgl.png");
+  background-image: url("bglm.png");
   background-repeat: repeat;
   background-size: 144px 144px;
   padding-top: 22.4px;
-	animation: bg-slide 20s linear infinite;
+	/*animation: bg-slide 20s linear infinite;
 	-ms-animation: bg-slide 20s linear infinite;
 	-moz-animation: bg-slide 20s linear infinite;
-	-webkit-animation: bg-slide 20s linear infinite;
+	-webkit-animation: bg-slide 20s linear infinite;*/
 }
 
 .bg-overlay {/*
@@ -1990,6 +1990,10 @@ p.game-explanation {
 	z-index: 10;
 }
 
+/* position: -> unclickable
+ * position: relative -> clickable
+ * ???????????
+ */
 .character-choice a{
 	position: relative;
 	z-index: 19;

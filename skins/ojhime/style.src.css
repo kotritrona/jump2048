@@ -93,12 +93,8 @@
 		background-position: -360px 0px;
   }
 
-  99.99% { /* because 100% won't work... I think css3 should have some "instant change" feature on this. or it exists but idk. */
-		background-position: -360px 0px;
-  }
-
   100% {
-		background-position: 0px 0px;
+		background-position: -360px 0px;
   }
 }
 
@@ -196,6 +192,7 @@
 
 .animation-mid-merged > .player-inner {
 	animation: merged-inner 200ms ease-in-out;
+	animation-fill-mode: none;
 }
 
 .tile-level-0 > .tile-mid > .tile-inner-top, .tile-level-1 > .tile-mid > .tile-inner-top {
@@ -319,10 +316,6 @@
 	z-index: 10;
 }
 
-/* position: -> unclickable
- * position: relative -> clickable
- * ???????????
- */
 .character-choice a{
 	position: relative;
 	z-index: 19;
