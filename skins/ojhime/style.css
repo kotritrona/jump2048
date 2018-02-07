@@ -977,7 +977,7 @@
 	height: 100%;
   background-repeat: repeat;
   background-size: 256px 256px;
-  opacity: 1;
+  opacity: 0.7;
 	z-index: 1;
 	animation: bg-slide2 10s linear infinite;
 	-ms-animation: bg-slide2 10s linear infinite;
@@ -990,10 +990,6 @@
 	z-index: 10;
 }
 
-/* position: -> unclickable
- * position: relative -> clickable
- * ???????????
- */
 .character-choice a{
 	position: relative;
 	z-index: 19;
