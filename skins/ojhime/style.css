@@ -599,12 +599,8 @@
 		background-position: -360px 0px;
   }
 
-  99.99% { /* because 100% won't work... I think css3 should have some "instant change" feature on this. or it exists but idk. */
-		background-position: -360px 0px;
-  }
-
   100% {
-		background-position: 0px 0px;
+		background-position: -360px 0px;
   }
 }
 
@@ -613,12 +609,8 @@
 		background-position: -360px 0px;
   }
 
-  99.99% { /* because 100% won't work... I think css3 should have some "instant change" feature on this. or it exists but idk. */
-		background-position: -360px 0px;
-  }
-
   100% {
-		background-position: 0px 0px;
+		background-position: -360px 0px;
   }
 }
 
@@ -627,12 +619,8 @@
 		background-position: -360px 0px;
   }
 
-  99.99% { /* because 100% won't work... I think css3 should have some "instant change" feature on this. or it exists but idk. */
-		background-position: -360px 0px;
-  }
-
   100% {
-		background-position: 0px 0px;
+		background-position: -360px 0px;
   }
 }
 
@@ -641,12 +629,8 @@
 		background-position: -360px 0px;
   }
 
-  99.99% { /* because 100% won't work... I think css3 should have some "instant change" feature on this. or it exists but idk. */
-		background-position: -360px 0px;
-  }
-
   100% {
-		background-position: 0px 0px;
+		background-position: -360px 0px;
   }
 }
 
@@ -855,6 +839,10 @@
 	-ms-animation: merged-inner 200ms ease-in-out;
 	-moz-animation: merged-inner 200ms ease-in-out;
 	-webkit-animation: merged-inner 200ms ease-in-out;
+	animation-fill-mode: none;
+	-ms-animation-fill-mode: none;
+	-moz-animation-fill-mode: none;
+	-webkit-animation-fill-mode: none;
 }
 
 .tile-level-0 > .tile-mid > .tile-inner-top, .tile-level-1 > .tile-mid > .tile-inner-top {
@@ -977,7 +965,7 @@
 	height: 100%;
   background-repeat: repeat;
   background-size: 256px 256px;
-  opacity: 0.7;
+  opacity: 1;
 	z-index: 1;
 	animation: bg-slide2 10s linear infinite;
 	-ms-animation: bg-slide2 10s linear infinite;
@@ -1622,12 +1610,8 @@ p.game-explanation {
 		background-position: -201.6px 0px;
   }
 
-  99.99% { /* because 100% won't work... I think css3 should have some "instant change" feature on this. or it exists but idk. */
-		background-position: -201.6px 0px;
-  }
-
   100% {
-		background-position: 0px 0px;
+		background-position: -201.6px 0px;
   }
 }
 
@@ -1636,12 +1620,8 @@ p.game-explanation {
 		background-position: -201.6px 0px;
   }
 
-  99.99% { /* because 100% won't work... I think css3 should have some "instant change" feature on this. or it exists but idk. */
-		background-position: -201.6px 0px;
-  }
-
   100% {
-		background-position: 0px 0px;
+		background-position: -201.6px 0px;
   }
 }
 
@@ -1650,12 +1630,8 @@ p.game-explanation {
 		background-position: -201.6px 0px;
   }
 
-  99.99% { /* because 100% won't work... I think css3 should have some "instant change" feature on this. or it exists but idk. */
-		background-position: -201.6px 0px;
-  }
-
   100% {
-		background-position: 0px 0px;
+		background-position: -201.6px 0px;
   }
 }
 
@@ -1664,12 +1640,8 @@ p.game-explanation {
 		background-position: -201.6px 0px;
   }
 
-  99.99% { /* because 100% won't work... I think css3 should have some "instant change" feature on this. or it exists but idk. */
-		background-position: -201.6px 0px;
-  }
-
   100% {
-		background-position: 0px 0px;
+		background-position: -201.6px 0px;
   }
 }
 
@@ -1878,6 +1850,10 @@ p.game-explanation {
 	-ms-animation: merged-inner 200ms ease-in-out;
 	-moz-animation: merged-inner 200ms ease-in-out;
 	-webkit-animation: merged-inner 200ms ease-in-out;
+	animation-fill-mode: none;
+	-ms-animation-fill-mode: none;
+	-moz-animation-fill-mode: none;
+	-webkit-animation-fill-mode: none;
 }
 
 .tile-level-0 > .tile-mid > .tile-inner-top, .tile-level-1 > .tile-mid > .tile-inner-top {
