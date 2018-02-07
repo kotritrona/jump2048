@@ -4,21 +4,9 @@
   0% {
   	transform: translateY(0) rotate(0deg);
   }
-  
-  15% {
-  	transform: translateY(-24px) rotate(0deg);
-  }
 
-  50% {
-  	transform: translateY(-80px) rotate(0deg);
-  }
-
-  85% {
-  	transform: translateY(-24px) rotate(0deg);
-  }
-  
   100% {
-  	transform: translateY(0) rotate(0deg);
+  	transform: translateY(-80px) rotate(0deg);
   }
 }
 
@@ -26,21 +14,9 @@
   0% {
   	transform: translateY(0) rotate(0deg);
   }
-  
-  15% {
-  	transform: translateY(-24px) rotate(0deg);
-  }
 
-  50% {
-  	transform: translateY(-80px) rotate(0deg);
-  }
-
-  85% {
-  	transform: translateY(-24px) rotate(0deg);
-  }
-  
   100% {
-  	transform: translateY(0) rotate(0deg);
+  	transform: translateY(-80px) rotate(0deg);
   }
 }
 
@@ -48,21 +24,9 @@
   0% {
   	transform: translateY(0) rotate(0deg);
   }
-  
-  15% {
-  	transform: translateY(-36px) rotate(0deg);
-  }
 
-  50% {
-  	transform: translateY(-120px) rotate(0deg);
-  }
-
-  85% {
-  	transform: translateY(-36px) rotate(0deg);
-  }
-  
   100% {
-  	transform: translateY(0) rotate(0deg);
+  	transform: translateY(-120px) rotate(0deg);
   }
 }
 
@@ -70,21 +34,9 @@
   0% {
   	transform: translateY(0) rotate(0deg);
   }
-  
-  15% {
-  	transform: translateY(-36px) rotate(0deg);
-  }
 
-  50% {
-  	transform: translateY(-120px) rotate(0deg);
-  }
-
-  85% {
-  	transform: translateY(-36px) rotate(0deg);
-  }
-  
   100% {
-  	transform: translateY(0) rotate(0deg);
+  	transform: translateY(-120px) rotate(0deg);
   }
 }
 
@@ -128,6 +80,26 @@
 	100% {
 		background-position: 256px -256px;
 	}
+}
+
+.animation-jump {
+	animation: jump 200ms cubic-bezier(0,0,0.33,1) 0s 2 alternate none;
+	transition: 400ms linear;
+}
+
+.animation-jump2 {
+	animation: jump2 200ms cubic-bezier(0,0,0.33,1) 0s 2 alternate none;
+	transition: 400ms linear;
+}
+
+.animation-jumpLong {
+	animation: jumpLong 200ms cubic-bezier(0,0,0.33,1) 0s 2 alternate none;
+	transition: 400ms linear;
+}
+
+.animation-jumpLong2 {
+	animation: jumpLong2 200ms cubic-bezier(0,0,0.33,1) 0s 2 alternate none;
+	transition: 400ms linear;
 }
 
 .player-mid {
