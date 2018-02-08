@@ -210,6 +210,10 @@ HTMLActuator.prototype.loadSounds = function() {
 		return;
 	}
 	else {
+		if(/android [0-4]/i.test(navigator.userAgent.toString())) {
+			this.sounds = {};
+			return;
+		}
 		this.sounds = {
 			jump: new Audio("skins/ojhime/throwdice.mp3"),
 			abyss: new Audio("skins/ojhime/hit.mp3"),
