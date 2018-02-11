@@ -189,8 +189,8 @@ HTMLActuator.prototype.chargePlayer = function(player, chargeTicks) {
   var mid = wrapper.querySelector(".player-mid");
   this.applyClasses(mid, ["player-mid"]);
   this.setTransform(mid, {
-  	"scaleX" : 1.0 + 0.01 * Math.min(40, chargeTicks),
-  	"scaleY" : 1.0 - 0.01 * Math.min(40, chargeTicks)
+  	"scaleX" : 1.0 + 0.01 * 0.3333 * Math.min(120, chargeTicks),
+  	"scaleY" : 1.0 - 0.01 * 0.3333 * Math.min(120, chargeTicks)
   });
 };
 
@@ -399,7 +399,7 @@ GameManager.prototype.merge = function(player, tile) {
 	}
 	player.value += player.mergedValue;
 	player.merged = true;
-}
+};
 
 // actuator function to trace back the player position
 HTMLActuator.prototype.tracebackPlayerPosition = function() {
