@@ -19,12 +19,11 @@ function GameManager(size, InputManager, Actuator, ScoreManager) {
   this.controllable = false;
   this.targetPosition = null;
   
-  // max charge is 40 ticks, so it needs to hold 0.05 * 40 == 2 seconds (+delay)
+  // edited chargePlayer to use raf, frameTime = 16 - 17, timeMax = 100
 	this.timeouts = {
 		preControllable: 100,
 		afterJump: 400,
-		afterLanding: 100,
-		chargeTick: 50
+		afterLanding: 100
 	};
 	this.powerModifier = 1.00;
 
@@ -343,13 +342,13 @@ GameManager.prototype.jumpPlayer = function(pos, jumpLength) {
 
 GameManager.prototype.inputJump = function(timeLength) {
 	var aim = this.targetPosition.position;
-	if(timeLength > 40) {
-		timeLength = 40;
+	if(timeLength > 120) {
+		timeLength = 120;
 	}
 	var deltaX = aim.x - this.player.x;
 	var deltaY = aim.y - this.player.y;
 	var dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-	var jumpLength = this.powerModifier * 500 * (timeLength / 40);
+	var jumpLength = this.powerModifier * 500 * (timeLength / 120);
 	var destX = this.player.x + jumpLength * deltaX / dist;
 	var destY = this.player.y + jumpLength * deltaY / dist;
 	this.jumpPlayer({
@@ -365,7 +364,7 @@ GameManager.prototype.beginChargeJump = function() {
 	var self = this;
 	this.player.chargeJump = {
 		chargeTicks : 0,
-		timeout : setTimeout(this.midChargeJump.bind(self), this.timeouts.chargeTick)
+		timeout : requestAnimationFrame(this.midChargeJump.bind(this)) // setTimeout(this.midChargeJump.bind(self), this.timeouts.chargeTick)
 	};
 };
 
@@ -376,7 +375,7 @@ GameManager.prototype.midChargeJump = function() {
 	}
 	this.player.chargeJump.chargeTicks++;
 	this.actuate("chargeJump");
-	this.player.chargeJump.timeout = setTimeout(this.midChargeJump.bind(self), this.timeouts.chargeTick);
+	this.player.chargeJump.timeout = requestAnimationFrame(this.midChargeJump.bind(this)); // setTimeout(this.midChargeJump.bind(self), this.timeouts.chargeTick);
 };
 
 GameManager.prototype.stopChargeJump = function() {
@@ -386,7 +385,8 @@ GameManager.prototype.stopChargeJump = function() {
 		return;
 	}
 	if(cj.timeout) {
-		clearTimeout(cj.timeout);
+		cancelAnimationFrame(cj.timeout);
+		//clearTimeout(cj.timeout);
 	}
 	this.inputJump(cj.chargeTicks);
 	this.player.chargeJump = null;
