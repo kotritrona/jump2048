@@ -401,8 +401,24 @@ GameManager.prototype.merge = function(player, tile) {
 	player.merged = true;
 }
 
+// actuator function to trace back the player position
+HTMLActuator.prototype.tracebackPlayerPosition = function() {
+	var container = this.playerContainer;
+	var player = container.querySelector(".player");
+	return { x: player.offsetLeft, y: player.offsetTop };
+};
+
 // do not win!
 GameManager.prototype.endPlayerMove = function () {
+	// fix some bug caused by lag on mobile page
+	// if player is not animated to the point due to lag,
+	// re-call this function itself next frame
+	var tracedPlayerPosition = this.actuator.tracebackPlayerPosition();
+	var scale = this.scale;
+	if(Math.abs(tracedPlayerPosition.x - scale(this.player.target.x)) + Math.abs(tracedPlayerPosition.y - scale(this.player.target.y)) > 5) {
+		return requestAnimationFrame(this.endPlayerMove.bind(this));
+	}
+	
 	var self = this;
 	var playerOnBoard = false;
 	this.grid.eachTile(function(tile) {
