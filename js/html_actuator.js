@@ -22,7 +22,7 @@ function HTMLActuator() {
   this.sharingContainer = document.querySelector(".score-sharing");
 
 	var size = document.querySelector(".game-container").offsetWidth;
-  this.scale = function(_) { return size / 500 * _; };
+  this.scale = function(_) { return Math.floor(size / 500 * _); };
   this.score = 0;
 }
 
@@ -264,8 +264,8 @@ HTMLActuator.prototype.chargePlayer = function(player, chargeTicks) {
   var mid = wrapper.querySelector(".player-mid");
   this.applyClasses(mid, ["player-mid"]);
   this.setTransform(mid, {
-  	"scaleX" : 1.0 + 0.01 * Math.min(40, chargeTicks),
-  	"scaleY" : 1.0 - 0.01 * Math.min(40, chargeTicks)
+  	"scaleX" : 1.0 + 0.01 * 0.3333 * Math.min(120, chargeTicks),
+  	"scaleY" : 1.0 - 0.01 * 0.3333 * Math.min(120, chargeTicks)
   });
 };
 
